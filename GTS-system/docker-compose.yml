@@ -1,0 +1,24 @@
+services:
+  database:
+    image: mysql:5.7
+    restart: unless-stopped
+    container_name: database-Wikaya
+    environment:
+      MYSQL_DATABASE: 'database-wikaya'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - my-db-vol:/var/lib/mysql
+    networks:
+      - spring-demo
+volumes:
+  my-db-vol:
+    driver: local
+networks:
+  spring-demo:
+    driver: bridge
