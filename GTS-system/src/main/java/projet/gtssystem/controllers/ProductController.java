@@ -18,21 +18,31 @@ import java.util.List;
 @Slf4j
 @FieldDefaults(level= AccessLevel.PUBLIC)
 @RequestMapping("/product")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ProductController {
     IProductService productService;
     @GetMapping("/getall")
     public List<Product> getAllProducts() {
        return productService.getAllProducts();
-    } @GetMapping("delete/{id}")
+    }
+    @DeleteMapping("delete/{id}")
     public void deleteProduct(@PathVariable int id) {
         productService.deleteProductById(id);
     }
-    @PutMapping("add")
+    @PostMapping("add")
     public void addProduct(@RequestBody Product product) {
         productService.addProduct(product);
     }
     @PutMapping("add+catetgory/{id}")
     public void addProductCategory(@PathVariable int id, @RequestBody Product product) {
         productService.addProductWithCategoryID(product,id);
+    }
+    @PutMapping("/update")
+    public void updateProdutc( @RequestBody Product product) {
+        productService.updateProduct(product);
+    }
+    @GetMapping("/getById/{id}")
+    public Product getProduct(@PathVariable int id) {
+        return productService.getProductById(id);
     }
 }
