@@ -45,7 +45,7 @@ public class AuthenticationService {
     private void sendValidationEmail(User user) throws MessagingException {
         var newToken=generateAndSaveActivationToken(user);
         //send mail logic
-        emailService.sendValidationEmail(user.getEmail(),newToken);
+        emailService.sendValidationEmail(user.getEmail(),newToken,"Mail de confirmation","code de vérification");
     }
 
     private String generateAndSaveActivationToken(User user) {
@@ -117,5 +117,16 @@ public class AuthenticationService {
         User user=userRepository.findByEmail(email).orElseThrow(()-> new SecurityException("User not found !"));
         user.setPassword(passwordEncoder.encode(newPassword));
         userRepository.save(user);
+    }
+
+    public boolean sendForgetPasswordMail(String email) throws MessagingException {
+        User user=userRepository.findByEmail(email).orElse(null);
+        if(user==null) return false;
+
+        emailService.sendValidationEmail(email
+                ,"http://localhost:4200/forgot-password?email="+email
+                ,"Changement de mot de passe"
+                ,"Lien de changement de mot de passe : ");
+        return true;
     }
 }

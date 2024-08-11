@@ -43,4 +43,9 @@ public class AuthenticationController {
         authenticationService.forgetPassword(email,newPassword);
         return ResponseEntity.ok().build();
     }
+    @PostMapping("/sendForgetPasswordMail")
+    public ResponseEntity<?> sendForgetPasswordMail(@RequestParam String email) throws MessagingException {
+
+        return authenticationService.sendForgetPasswordMail(email)? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
+    }
 }

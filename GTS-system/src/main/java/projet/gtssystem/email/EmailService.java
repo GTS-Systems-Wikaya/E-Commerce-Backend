@@ -18,12 +18,13 @@ import org.springframework.mail.javamail.JavaMailSender;
 public class EmailService {
     @Autowired
     private JavaMailSender emailSender;
-    public void sendValidationEmail(String email, String token) throws MessagingException {
+    public void sendValidationEmail(String email, String token,String subject,String text) throws MessagingException {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("oussema.ayari2001@gmail.com");
         message.setTo(email);
-        message.setSubject("Mail de confirmation");
-        message.setText("code de vérification : "+token);
+        message.setSubject(subject);
+        message.setText(text+token);
         emailSender.send(message);
     }
+
 }
