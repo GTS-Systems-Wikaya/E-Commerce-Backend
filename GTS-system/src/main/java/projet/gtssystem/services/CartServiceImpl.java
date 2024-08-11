@@ -9,6 +9,7 @@ import projet.gtssystem.entities.Product;
 import projet.gtssystem.repositories.CartRepository;
 import projet.gtssystem.repositories.ProductRepository;
 
+import java.util.List;
 import java.util.Optional;
 @Service
 @AllArgsConstructor
@@ -28,5 +29,10 @@ public class CartServiceImpl implements ICartService{
        cart.setUser(user.get());
 
         return cartRepository.save(cart);
+    }
+
+    @Override
+    public List<Cart> getAllCarts() {
+        return cartRepository.findAll();
     }
 }

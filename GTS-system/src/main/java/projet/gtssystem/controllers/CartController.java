@@ -17,7 +17,7 @@ public class CartController {
 
     ICartService cartService;
 
-    @PostMapping("/add/{idproduct}/{useremail}")
+    @GetMapping("/add/{idproduct}/{useremail}")
     public Cart addCart(@PathVariable Integer idproduct,@PathVariable String useremail){
         return cartService.addCart(idproduct,useremail);
     }

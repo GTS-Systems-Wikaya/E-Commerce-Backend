@@ -21,6 +21,7 @@ public class Product {
     private String name;
     private String description;
     private Float price;
+    private String imagePath;
     @ManyToOne
     private CategoryProduct category;
 
