@@ -40,11 +40,11 @@ public class ProductController {
         productService.deleteProductById(id);
     }
     @PostMapping("add")
-    public void addProduct(@RequestBody Product product,@RequestBody MultipartFile file) throws IOException {
-        String uploadImage = storageService.uploadImageToFileSystem(file);
+    public void addProduct(@RequestBody Product product/*,@RequestParam MultipartFile file*/) /*throws IOException*/ {
+       /* String uploadImage = storageService.uploadImageToFileSystem(file);
         ResponseEntity.status(HttpStatus.OK).body(uploadImage);
         String filePath=FOLDER_PATH+file.getOriginalFilename();
-        //product.setImagePath(filePath);
+        product.setImagePath(filePath);*/
         productService.addProduct(product);
     }
     @PutMapping("add+catetgory/{id}")

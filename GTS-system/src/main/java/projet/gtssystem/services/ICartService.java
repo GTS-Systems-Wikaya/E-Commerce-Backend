@@ -7,4 +7,8 @@ import java.util.List;
 public interface ICartService {
     Cart addCart(Integer productId,String userEmail);
     List<Cart> getAllCarts();
+    List<Cart> getCartsByUserEmail(String userEmail);
+    Integer gettotalProductsinCartByEmail(String email);
+    void deleteCartByid(int id);
+
 }

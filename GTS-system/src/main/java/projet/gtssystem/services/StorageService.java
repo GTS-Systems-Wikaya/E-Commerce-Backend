@@ -18,6 +18,9 @@ public class StorageService {
 
 
     public String uploadImageToFileSystem(MultipartFile file) throws IOException {
+        if(file.isEmpty()){
+            System.out.println("no file");
+        }
         System.out.println(file.getOriginalFilename());
         String filePath=FOLDER_PATH+file.getOriginalFilename();
 
