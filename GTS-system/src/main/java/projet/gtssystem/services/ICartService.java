@@ -10,5 +10,6 @@ public interface ICartService {
     List<Cart> getCartsByUserEmail(String userEmail);
     Integer gettotalProductsinCartByEmail(String email);
     void deleteCartByid(int id);
+    Float totalPrice(String email);
 
 }

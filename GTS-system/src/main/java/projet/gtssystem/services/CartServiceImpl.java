@@ -62,4 +62,16 @@ public class CartServiceImpl implements ICartService{
     public void deleteCartByid(int id) {
 cartRepository.deleteById(id);
     }
+
+    @Override
+    public Float totalPrice(String email) {
+        float totalprice=0;
+        List<Cart> carts = getCartsByUserEmail(email);
+        for(Cart cart:carts){
+            totalprice+=cart.getProduct().getPrice();
+
+        }
+
+        return totalprice;
+    }
 }

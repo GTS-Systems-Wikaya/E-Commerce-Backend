@@ -31,10 +31,18 @@ public class CartController {
     public void  getCartsByEmail(@PathVariable Integer id){
          cartService.deleteCartByid(id);
     }
+
     @GetMapping("/totalproducts/{useremail}")
     public Integer getTotalProducts(@PathVariable String useremail){
        return cartService.gettotalProductsinCartByEmail(useremail);
 
     }
+
+    @GetMapping("/totalPrice/{useremail}")
+    public Float getTotaPrice(@PathVariable String useremail){
+        return cartService.totalPrice(useremail);
+
+    }
+
 
 }
