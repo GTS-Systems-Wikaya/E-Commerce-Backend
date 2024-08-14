@@ -74,4 +74,10 @@ cartRepository.deleteById(id);
 
         return totalprice;
     }
+
+    @Override
+    public void deleteAllCartsByemail(String email) {
+
+
+    }
 }
