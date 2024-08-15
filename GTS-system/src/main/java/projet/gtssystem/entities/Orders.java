@@ -1,29 +1,33 @@
 package projet.gtssystem.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import projet.gtssystem.User.User;
 
-import java.util.Locale;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Product {
+public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String name;
-    private String description;
-    private Float price;
-    private String imagePath;
+
     @ManyToOne
-    private CategoryProduct category;
+    private User user;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Product> items;
 
+    private LocalDateTime orderDate;
+
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status;
 }
