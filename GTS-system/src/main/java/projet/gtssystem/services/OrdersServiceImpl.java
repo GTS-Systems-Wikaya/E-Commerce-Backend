@@ -28,7 +28,7 @@ OrdersRepository ordersRepository;
     public Orders addOrder(String email) {
         Orders order = new Orders();
         Optional<User> user  ;
-        List<Product> products=new ArrayList<>(); ;
+        List<Product> products=new ArrayList<>();
 
 
         List<Cart> carts = cartService.getCartsByUserEmail(email);
@@ -43,4 +43,17 @@ OrdersRepository ordersRepository;
         cartRepository.deleteAll(carts);
         return ordersRepository.save(order);
     }
+
+    @Override
+    public List<Orders> getAllOrdersByEmail(String email) {
+        List<Orders> ordersbyEmail = new ArrayList<>();
+        List<Orders> orders = ordersRepository.findAll();
+        for(Orders order:orders){
+            if(order.getUser().getEmail().equals(email)){
+                ordersbyEmail.add(order);
+            }
+        }
+        return ordersbyEmail;
+    }
+
 }

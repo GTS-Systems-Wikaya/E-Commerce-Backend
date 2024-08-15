@@ -23,7 +23,7 @@ public class Orders {
     @ManyToOne
     private User user;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Product> items;
 
     private LocalDateTime orderDate;

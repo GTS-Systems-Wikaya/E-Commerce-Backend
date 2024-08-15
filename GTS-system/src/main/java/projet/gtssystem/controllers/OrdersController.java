@@ -14,15 +14,21 @@ import projet.gtssystem.entities.Orders;
 import projet.gtssystem.repositories.OrdersRepository;
 import projet.gtssystem.services.IOrdersService;
 
+import java.util.List;
+
 @RestController
 @AllArgsConstructor
 @Slf4j
 @FieldDefaults(level= AccessLevel.PUBLIC)
-@RequestMapping("/cart")
+@RequestMapping("/orders")
 public class OrdersController {
     IOrdersService ordersService;
     @GetMapping("/add/{useremail}")
     public Orders addCart(@PathVariable String useremail){
         return ordersService.addOrder(useremail);
+    }
+    @GetMapping("/getall/{useremail}")
+    public List<Orders> getallOrders(@PathVariable String useremail){
+        return ordersService.getAllOrdersByEmail(useremail);
     }
 }
