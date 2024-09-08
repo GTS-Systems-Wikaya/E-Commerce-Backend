@@ -1,6 +1,7 @@
 package projet.gtssystem.services;
 
 import lombok.AllArgsConstructor;
+import org.hibernate.query.Order;
 import org.springframework.stereotype.Service;
 import projet.gtssystem.User.User;
 import projet.gtssystem.User.UserRepository;
@@ -54,6 +55,12 @@ OrdersRepository ordersRepository;
             }
         }
         return ordersbyEmail;
+    }
+
+    @Override
+    public List<Orders> getAllOrders() {
+        return    ordersRepository.findAll();
+
     }
 
 }

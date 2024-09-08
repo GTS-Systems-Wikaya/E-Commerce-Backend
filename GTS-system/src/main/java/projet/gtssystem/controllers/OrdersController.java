@@ -31,4 +31,8 @@ public class OrdersController {
     public List<Orders> getallOrders(@PathVariable String useremail){
         return ordersService.getAllOrdersByEmail(useremail);
     }
+    @GetMapping("/getall")
+    public List<Orders> getallOrders(){
+        return ordersService.getAllOrders();
+    }
 }
